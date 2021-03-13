@@ -1,0 +1,23 @@
+<div *ngIf = "dataLoaded==false"class="spinner-border text-warning" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  
+  <table class="table" border="4" bgcolor=#e77f67>
+
+    <thead>
+        <tr>
+            <th>Marka</th>
+            <th>Renk</th>
+            <th>Müşteri</th>
+            <th>Kiralama Tarihi</th>
+            <th>Teslim Alma Tarihi</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let rental of rentals">
+        <td>{{rental.brandName}}</td>
+        <td>{{rental.colorName}}</td>
+        <td>{{rental.firstName + " " +rental.lastName}}</td>
+        <td>{{rental.rentDate}}</td>
+        <td>{{(rental.returnDate == null)? "Teslim Alınmadı": rental.returnDate | date:'dd--MM-YYYY'}}</td>
+    </tr>
+  </table>
