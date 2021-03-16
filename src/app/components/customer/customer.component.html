@@ -2,16 +2,18 @@
     <span class="visually-hidden">Loading...</span>
   </div>
   
-  <table class="table" border="4" bgcolor=#e66767>
-
-    <thead>
+  <table class="table table-striped table-active">
+    <thead class="thead-light">
         <tr>
             <th>Müşteri</th>
             <th>Şirket</th>
         </tr>
     </thead>
-    <tr *ngFor="let customer of customers">
+    <tbody>
+        <tr *ngFor="let customer of customers">
         <td>{{customer.firstName + " " + customer.lastName}}</td>
         <td>{{customer.companyName}}</td>
     </tr>
+    </tbody>
+    
   </table>

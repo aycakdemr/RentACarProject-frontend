@@ -1,0 +1,38 @@
+<h5><mark>ARAÇLAR</mark> </h5>
+<style>
+  .row{
+    display: grid;
+  grid-gap: 8px;
+  grid-template-columns: 270px  270px  270px;
+  }
+</style>
+<div class="row">
+  <div *ngFor="let car of cars" class="card" style="width: 18rem ;">
+  <div *ngFor="let image of images">
+    <img  *ngIf="car.carId==image.carId"  
+    [src]="imageUrl+image.imagePath"
+    class=""
+    style="height: 100%; width: 100%; object-fit: contain"
+    [alt]="imageUrl+image.imagePath"
+  />
+  </div>
+  
+  <div class="card-body">
+    <h5 class="card-title">{{car.carDescription}}</h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><mark>Id</mark> : {{car.carId}}</li>
+    <li class="list-group-item"><mark>Marka</mark> : {{car.brandName}}</li>
+    <li class="list-group-item"><mark>Renk</mark> : {{car.colorName}}</li>
+    <li class="list-group-item"><mark>Model</mark> : {{car.carModelYear}}</li>
+    <li class="list-group-item"><mark>Günlük Kira </mark>: {{car.carDailyPrice}}</li>
+  </ul>
+  <div class="card-body" >
+    <a href="#"  class="card-link btn btn-primary">Kirala</a>
+    <a href="#" routerLink = "/cars/cardetails2/{{car.carId}}"
+     class="card-link btn btn-primary">İncele</a>
+  </div>
+  
+</div> 
+</div>
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Car } from 'src/app/models/car';
 
 @Component({
   selector: 'app-navi',
@@ -11,5 +12,6 @@ export class NaviComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 }

@@ -1,0 +1,25 @@
+<h5><mark>MARKALAR</mark> </h5>
+ 
+
+<ul class="list-group"> 
+  <li (click)="setCurrentBrand(brand)" 
+  routerLink = "/cars/brand/{{brand.id}}"
+  *ngFor="let brand of brands"
+  [class]="getCurrentBrandClass(brand)">
+  {{brand.brandName}}
+
+  </li>
+</ul> 
+
+<h5><mark>RENKLER</mark> </h5>
+ 
+
+<ul class="list-group"> 
+  <li (click)="setCurrentColor(color)" 
+  routerLink = "/cars/color/{{color.id}}"
+  *ngFor="let color of colors"
+  [class]="getCurrentColorClass(color)">
+  {{color.colorName}}
+
+  </li>
+</ul> 
