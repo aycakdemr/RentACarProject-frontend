@@ -4,7 +4,7 @@ import { CardetailComponent } from './components/cardetail/cardetail.component';
 import { CarComponent } from './components/car/car.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { RentalComponent } from './components/rental/rental.component';
-import { Cardetails2Component } from './cardetails2/cardetails2.component';
+import { Cardetails2Component } from './components/cardetails2/cardetails2.component';
 
 const routes: Routes = [
   {path:"",pathMatch:"full",component:CarComponent},

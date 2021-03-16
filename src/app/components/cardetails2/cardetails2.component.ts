@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Car } from '../models/car';
-import { Image } from '../models/image';
-import { CarService } from '../services/car.service';
-import { ImageService } from '../services/image.service';
+import { Car } from '../../models/car';
+import { Image } from '../../models/image';
+import { CarService } from '../../services/car.service';
+import { ImageService } from '../../services/image.service';
 
 @Component({
   selector: 'app-cardetails2',

@@ -9,7 +9,7 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { CardetailComponent } from './components/cardetail/cardetail.component';
 import { BrandColorComponent } from './components/brand-color/brand-color.component';
-import { Cardetails2Component } from './cardetails2/cardetails2.component';
+import { Cardetails2Component } from './components/cardetails2/cardetails2.component';
 
 @NgModule({
   declarations: [
