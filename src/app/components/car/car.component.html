@@ -1,35 +1,84 @@
-<div *ngIf = "dataLoaded==false"class="spinner-border text-warning" role="status">
-  <span class="visually-hidden">Loading...</span>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      
+      <app-brand-color></app-brand-color>
+    </div>
+
+    <div class="col-md-9">
+      <div
+        *ngIf="dataLoaded == false"
+        class="spinner-border text-warning"
+        role="status"
+      >
+        <span class="visually-hidden">Loading...</span>
+      </div>
+
+     
+      <div class="row g-2">
+        <div class="col-4">
+          <div class="form-floating">
+            <input type="text"[(ngModel)]="filterText" class="form-control" id="filterText" placeholder="aramak istediğiniz ifadeyi giriniz">            <label for="floatingInputGrid">Araç</label>
+          </div>
+        </div>
+        <div class="col-1">
+          <button type="submit" class="btn btn-danger">Ara</button>
+        </div>
+        <div class="col-3">
+          <div class="form-floating">
+            <select class="form-select" [(ngModel)]="filterText1" id="floatingSelectGrid" aria-label="Floating label select example">
+              <option selected>Marka Seçiniz</option>
+              <option  *ngFor="let brand of brands" [value]="brand.id">{{brand.brandName}}</option>
+            </select>
+            <label for="floatingSelectGrid">Markalar</label>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-floating">
+            <select class="form-select" [(ngModel)]="filterText2" id="floatingSelectGrid" aria-label="Floating label select example">
+              <option selected>Renk Seçiniz</option>
+              <option *ngFor="let color of colors" [value]="color.id">{{color.colorName}}</option>
+            </select>
+            <label for="floatingSelectGrid">Renkler</label>
+          </div>
+        </div>
+        
+        <div class="col-1">
+          <button routerLink="/cars/filter/{{filterText1}}/{{filterText2}}" class="btn btn-danger">Filtrele</button>
+        </div>
+      </div>
+      <table class="table table-striped table-active">
+        <thead class="thead-light">
+          <tr>
+            <th>ID</th>
+            <th>Marka</th>
+            <th>Renk</th>
+            <th>Model</th>
+            <th>Günlük Kirası</th>
+            <th>Açıklama</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let car of cars | carFilter :filterText" >
+            <td>{{ car.carId }}</td>
+            <td>{{ car.brandName }}</td>
+            <td>{{ car.colorName }}</td>
+            <td>{{ car.carModelYear }}</td>
+            <td>{{ car.carDailyPrice }}</td>
+            <td>{{ car.carDescription }}</td>
+          </tr>
+        </tbody>
+        <div style="position: relative; margin-right: 200">
+          <button
+            routerLink="/cars/cardetails"
+            type="button"
+            class="btn btn-secondary"
+            style="text-align: center"
+          >
+            Araçları Detaylı Görmek İçin Tıklayınız
+          </button>
+        </div>
+      </table>
+    </div>
+  </div>
 </div>
-
-<table class="table table-striped table-active" >
-  <thead class="thead-light">
-    <tr>
-        <th>ID</th>
-        <th>Marka</th>
-        <th>Renk</th>
-        <th>Model</th>
-        <th>Günlük Kirası</th>
-        <th>Açıklama</th>
-    </tr>
-</thead>
-<tbody>
-  <tr 
-  *ngFor="let car of cars"
-  >
-    <td>{{car.carId}}</td>
-    <td>{{car.brandName}}</td>
-    <td>{{car.colorName}}</td>
-    <td>{{car.carModelYear}}</td>
-    <td>{{car.carDailyPrice}}</td>
-    <td>{{car.carDescription}}</td>
-</tr>
-</tbody>
-<div style="position: relative; margin-right: 200 ;">
-  <button 
-  routerLink = "/cars/cardetails"
-  type="button" class="btn btn-secondary" style="text-align: center;">Araçları Detaylı  Görmek İçin Tıklayınız</button>
-
-</div>
-
-</table>

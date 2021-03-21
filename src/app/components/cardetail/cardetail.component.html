@@ -3,7 +3,7 @@
   .row{
     display: grid;
   grid-gap: 8px;
-  grid-template-columns: 270px  270px  270px;
+  grid-template-columns: 260px  260px  260px 260px 260px;
   }
 </style>
 <div class="row">
@@ -28,7 +28,7 @@
     <li class="list-group-item"><mark>Günlük Kira </mark>: {{car.carDailyPrice}}</li>
   </ul>
   <div class="card-body" >
-    <a href="#"  class="card-link btn btn-primary">Kirala</a>
+    
     <a href="#" routerLink = "/cars/cardetails2/{{car.carId}}"
      class="card-link btn btn-primary">İncele</a>
   </div>

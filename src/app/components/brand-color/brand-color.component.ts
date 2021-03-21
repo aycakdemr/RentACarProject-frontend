@@ -15,6 +15,8 @@ export class BrandColorComponent implements OnInit {
   currentBrand?:Brand;
   colors:Color[] = [];
   currentColor :Color;
+  filterText1 ="";
+  filterText2="";
   constructor(private colorService:ColorService,
     private brandService: BrandService) { }
 

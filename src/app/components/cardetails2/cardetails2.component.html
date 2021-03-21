@@ -1,20 +1,27 @@
-<div class="card mb-3" *ngFor="let car of cars">
-    <div *ngFor="let image of images">
-        <img  *ngIf="car.carId==image.carId"  
+<div class="row g-0 bg-light position-relative" *ngFor="let car of cars">
+  <div class="col-md-6 mb-md-0 p-md-4" *ngFor="let image of images">
+    <img  *ngIf="car.carId==image.carId"  
         [src]="imageUrl+image.imagePath"
         class=""
         style="height: 100%; width: 100%; object-fit: contain"
         [alt]="imageUrl+image.imagePath"
       />
-      </div>
-    <div class="card-body">
-      <h5 class="card-title">{{car.carDescription}}</h5>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><mark>Id</mark> : {{car.carId}}</li>
-       <li class="list-group-item"><mark>Marka</mark> : {{car.brandName}}</li>
-       <li class="list-group-item"><mark>Renk</mark> : {{car.colorName}}</li>
-       <li class="list-group-item"><mark>Model</mark> : {{car.carModelYear}}</li>
-       <li class="list-group-item"><mark>Günlük Kira </mark>: {{car.carDailyPrice}}</li>
-      </ul>
-    </div>
   </div>
+  <div class="col-md-6 p-4 ps-md-0">
+    <h5 class="card-title">{{car.carDescription}}</h5>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><mark>Id</mark> : {{car.carId}}</li>
+     <li class="list-group-item"><mark>Marka</mark> : {{car.brandName}}</li>
+     <li class="list-group-item"><mark>Renk</mark> : {{car.colorName}}</li>
+     <li class="list-group-item"><mark>Model</mark> : {{car.carModelYear}}</li>
+     <li class="list-group-item"><mark>Günlük Kira </mark>: {{car.carDailyPrice}}</li>
+    </ul>
+    
+    <div class="card-body" >
+    
+      <app-date-time></app-date-time>
+    </div>
+    
+  </div>
+</div>
+
