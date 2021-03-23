@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
-import { Car } from 'src/app/models/car';
+import { CarDto } from 'src/app/models/carDto';
 import { Color } from 'src/app/models/color';
 import { BrandService } from 'src/app/services/brand.service';
 import { CarService } from 'src/app/services/car.service';
@@ -16,11 +16,11 @@ import { BrandColorComponent } from '../brand-color/brand-color.component';
 })
 export class CarComponent implements OnInit {
 
-  cars:Car[] = [];
+  cars:CarDto[] = [];
   colors : Color[] =[]
   brands :Brand[] = []
   dataLoaded =false;
-  currentCar : Car;
+  currentCar : CarDto;
   filterText="";
   filterText1:number;
   filterText2:number;
@@ -71,7 +71,7 @@ export class CarComponent implements OnInit {
       this.dataLoaded =true
     })
   }
-  setCurrentCar(car:Car){
+  setCurrentCar(car:CarDto){
     this.currentCar=car;
   }
   getColors(){

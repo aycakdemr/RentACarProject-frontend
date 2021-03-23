@@ -19,7 +19,57 @@
     
     <div class="card-body" >
     
-      <app-date-time></app-date-time>
+      <div class="form-group row">
+        <label for="example-datetime-local-input" class="col-3 col-form-label">
+          <mark>Kiralama Tarihi</mark></label
+        >
+        <div class="col-6">
+          <input [(ngModel)] ="rentStartDate"
+            name="rentStartDate"
+            class="form-control"
+            type="datetime-local"
+            id="rent-start-date-input"
+            required
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-datetime-local-input" class="col-3 col-form-label">
+          <mark>Dönüş Tarihi</mark></label
+        >
+        <div class="col-6">
+          <input [(ngModel)] ="rentEndDate"
+            name="rentEndDate"
+            class="form-control"
+            type="datetime-local"
+            id="rent-end-date-input"
+            required
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-4 card-body">
+          <button type="button" (click)=getDiffBetweenDays() class="btn btn-outline-dark">Tutar Hesapla</button>
+        </div>
+        
+        <div class="col-6">
+          <div class="input-group card-body">
+            <span class="input-group-text">$</span>
+            <span class="input-group-text">{{gunFarki}}</span>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card-body">
+            <a
+              routerLink="/cars/rental"
+              class="card-link btn btn-primary"
+              (click)="rentCar(car.carId)"
+              >Kirala</a
+            >
+          </div>
+        </div>
+      </div>
+      
     </div>
     
   </div>

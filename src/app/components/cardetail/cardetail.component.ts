@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Image } from 'src/app/models/image';
 import { ImageService } from 'src/app/services/image.service';
-import { Car } from '../../models/car';
+import { CarDto } from '../../models/carDto';
 import { CarService } from '../../services/car.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { CarService } from '../../services/car.service';
 })
 export class CardetailComponent implements OnInit {
 
-  cars:Car[]=[];
+  cars:CarDto[]=[];
   images : Image[]=[];
   ImagePaths: string[] = [];
   imageUrl = "https://localhost:44393/";

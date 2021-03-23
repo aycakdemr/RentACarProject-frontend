@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { Brand } from 'src/app/models/brand';
+import { CarDto } from 'src/app/models/carDto';
+import { Color } from 'src/app/models/color';
 import { Rental } from 'src/app/models/rental';
+import { RentalDto } from 'src/app/models/rentalDto';
 import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
@@ -9,9 +14,10 @@ import { RentalService } from 'src/app/services/rental.service';
 })
 export class RentalComponent implements OnInit {
 
-  rentals:Rental[] = [];
+ 
+  rentals:RentalDto[] = [];
   dataLoaded =false;
-  constructor(private rentalService : RentalService) { }
+  constructor(private rentalService : RentalService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getRentals();
@@ -25,5 +31,5 @@ export class RentalComponent implements OnInit {
     })
     
   }
-
+  
 }
