@@ -56,16 +56,18 @@
             <th>Model</th>
             <th>Günlük Kirası</th>
             <th>Açıklama</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let car of cars | carFilter :filterText"routerLink = "/cars/update/{{car.carId}}" >
+          <tr *ngFor="let car of cars | carFilter :filterText" >
             <td>{{ car.carId }}</td>
             <td>{{ car.brandName }}</td>
             <td>{{ car.colorName }}</td>
             <td>{{ car.carModelYear }}</td>
             <td>{{ car.carDailyPrice }}</td>
             <td>{{ car.carDescription }}</td>
+            <td><span routerLink = "/cars/update/{{car.carId}}"class="badge bg-success">Güncelle</span></td>
           </tr>
         </tbody>
         <div style="position: relative; margin-right: 200">
