@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import {FormsModule,ReactiveFormsModule} from '@angular/forms'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
-
 import { AppRoutingModule } from './app-routing.module';
+import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
 import { AppComponent } from './app.component';
 import { CarComponent } from './components/car/car.component';
 import { NaviComponent } from './components/navi/navi.component';
@@ -28,6 +28,8 @@ import { UpdateCarComponent } from './components/update-car/update-car.component
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component'
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { DialogExampleComponent } from './dialog-example/dialog-example.component';
 
 @NgModule({
   declarations: [
@@ -50,13 +52,17 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     UpdateColorComponent,
     UpdateCarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UpdateUserComponent,
+    DialogExampleComponent
   ],
+  entryComponents : [DialogExampleComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MatDialogModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({
@@ -64,8 +70,10 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     })
   ],
   providers: [
-    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

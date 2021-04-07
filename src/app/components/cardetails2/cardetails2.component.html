@@ -46,12 +46,18 @@
             required
           />
         </div>
-        <div class="card-body">
+        <div class="card-body" *ngIf=isRentable()>
           <a
             routerLink="/cars/rental"
             class="card-link btn btn-primary"
             (click)="rentCar(car.carId)"
             >Kirala</a
+          >
+        </div>
+        <div class="card-body" *ngIf=!isRentable()>
+          <a
+            class="card-link btn btn-primary"
+            >Araç Kiralamaya Puanınız yeterli Değil</a
           >
         </div>
       </div>

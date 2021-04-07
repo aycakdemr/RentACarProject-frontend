@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
+import { Car } from 'src/app/models/car';
 import { CarDto } from 'src/app/models/carDto';
 import { Color } from 'src/app/models/color';
 import { BrandService } from 'src/app/services/brand.service';
@@ -17,6 +18,7 @@ import { BrandColorComponent } from '../brand-color/brand-color.component';
 export class CarComponent implements OnInit {
 
   cars:CarDto[] = [];
+  cars2:Car[]=[]
   colors : Color[] =[]
   brands :Brand[] = []
   dataLoaded =false;
@@ -50,7 +52,7 @@ export class CarComponent implements OnInit {
 
   getCars(){
 
-    this.carService.getCars().subscribe(response =>{
+    this.carService.getCarsDetail().subscribe(response =>{
       this.cars = response.data
       this.dataLoaded =true
     })
@@ -93,6 +95,12 @@ export class CarComponent implements OnInit {
     }
     })
     
+  }
+  delete(id:number){
+    this.carService.delete(id).subscribe(response=>{
+      console.log(response)
+      this.toastrService.info('Araç Silindi.', 'İşlem Sonucu');
+    })
   }
 
 

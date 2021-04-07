@@ -26,34 +26,28 @@
           <a class="nav-link active" routerLink="/rentals" href="#"
             >Kiralamalar</a
           >
-          <!-- </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li> -->
+
         </li>
       </ul>
+      <div class="d-flex" *ngIf="!isAuthenticated()">
+        <button type="button" class="btn btn-secondary"routerLink="/register">Register</button>
 
-      <form class="d-flex">
-        <button type="button" routerLink="/register"class="btn btn-dark">Register</button>
-      </form>
+        <button type="button" class="btn btn-secondary"routerLink="/login">Login</button>
+      </div>
 
-      <form class="d-flex">
-        <button type="button"routerLink="/login" class="btn btn-dark">Login</button>
-      </form>
+      <div class="d-flex" *ngIf="isAuthenticated()">
+        
+        <div class="dropdown me-1" >
+          <button type="button"*ngFor="let user of users" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
+            {{user.firstName}} {{user.lastName}}
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+             <li><a class="dropdown-item"(click)=logout() href="#">Çıkış Yap</a></li>
+            <li><a class="dropdown-item" routerLink="/updateuser"href="#">Bilgileri Güncelle</a></li>
+          </ul>
+        </div>
+      </div>
+
     </div>
   </div>
 </nav>

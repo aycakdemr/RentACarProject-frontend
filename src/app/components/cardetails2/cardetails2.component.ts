@@ -4,7 +4,10 @@ import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { Color } from 'src/app/models/color';
 import { Rental } from 'src/app/models/rental';
+import { User } from 'src/app/models/user';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { RentalService } from 'src/app/services/rental.service';
+import { UserService } from 'src/app/services/user.service';
 import { CarDto } from '../../models/carDto';
 import { Image } from '../../models/image';
 import { CarService } from '../../services/car.service';
@@ -24,6 +27,7 @@ export class Cardetails2Component implements OnInit {
   rentStartDate: Date = this.DateTimeNow;
   rentEndDate: Date = this.DateTimeNow;
   cars: CarDto[] = [];
+  users : User[]=[]
   images: Image[] = [];
   ImagePaths: string[] = [];
   imageUrl = 'https://localhost:44393/';
@@ -33,7 +37,9 @@ export class Cardetails2Component implements OnInit {
     private activatedRoute: ActivatedRoute,
     private ImageService: ImageService,
     private toastrService: ToastrService,
-    private rentalService: RentalService
+    private rentalService: RentalService,
+    private userService:UserService,
+    private localStorage:LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -41,8 +47,9 @@ export class Cardetails2Component implements OnInit {
       if (params['carId']) {
         this.getCarsById(params['carId']);
         this.getImagesById(params['carId']);
-        this.getDiffBetweenDays();
+        this.getUsersById();
       }
+
       
     });
   }
@@ -80,5 +87,16 @@ export class Cardetails2Component implements OnInit {
     var date2 = new Date(this.rentEndDate.toString());
     var difference = date2.getTime() - date1.getTime();
     var gunFarki = Math.ceil(difference / (1000 * 3600 * 24)); 
+  }
+  isRentable(){
+    if(this.cars[0].findeks<=this.users[0].findeks){
+      return true;
+    }
+    return false;
+  }
+  getUsersById(){
+    this.userService.getUsersById(Number(this.localStorage.getItem('id'))).subscribe(response=>{
+      this.users=response.data
+    })
   }
 }

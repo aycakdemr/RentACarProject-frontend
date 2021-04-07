@@ -57,6 +57,7 @@
             <th>Günlük Kirası</th>
             <th>Açıklama</th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -68,6 +69,7 @@
             <td>{{ car.carDailyPrice }}</td>
             <td>{{ car.carDescription }}</td>
             <td><span routerLink = "/cars/update/{{car.carId}}"class="badge bg-success">Güncelle</span></td>
+            <td><span class="badge bg-danger" (click)=delete(car.carId)>Sil</span></td>
           </tr>
         </tbody>
         <div style="position: relative; margin-right: 200">

@@ -6,5 +6,7 @@ export interface CarDto{
     colorName:string,
     carModelYear:number,
     carDailyPrice:number,
-    carDescription:string
+    carDescription:string,
+    findeks:number
 }
+

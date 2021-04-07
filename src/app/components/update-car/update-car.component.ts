@@ -5,6 +5,7 @@ import {FormGroup,FormBuilder,FormControl,Validators} from '@angular/forms'
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CarService } from 'src/app/services/car.service';
+import { CarDto } from 'src/app/models/carDto';
 
 @Component({
   selector: 'app-update-car',
@@ -23,40 +24,34 @@ export class UpdateCarComponent implements OnInit {
     this.activatedRoute.params.subscribe(params=>{
       if(params["carId"]){
        this.getCarsById(params["carId"])
-
       }
-    this.createCarAddForm();
-    this.getCars();
-    
-  })
-  }
-  getCars(){
-
-    this.carService.getCars().subscribe(response =>{
-      this.cars = response.data
+      this.createCarAddForm();
     })
     
-  }
 
+  }
   createCarAddForm(){
     this.carUpdateForm = this.formBuilder.group({
       
-      carId:  ["", Validators.required],
+      id:  ["", Validators.required],
       colorId:["",Validators.required],
       brandId:["",Validators.required],
-      carModelYear:["",Validators.required],
-      carDailyPrice:["",Validators.required],
-      carDescription:["",Validators.required],
+      modelYear:["",Validators.required],
+      dailyPrice:["",Validators.required],
+      description:["",Validators.required],
+      findeks:["",Validators.required],
     })
   }
   update(){
     this.carUpdateForm.patchValue({
-      id: this.car.carId,
+      id: this.car.id,
       
     })
     if(this.carUpdateForm.valid){
       let colorModel = Object.assign({},this.carUpdateForm.value)
+      console.log(colorModel)
       this.carService.update(colorModel).subscribe(response=>{
+
         this.toastrService.success(response.message,"Başarılı")
       })
       
@@ -68,7 +63,7 @@ export class UpdateCarComponent implements OnInit {
   getCarsById(id:number){
     this.carService.getCarsById(id).subscribe(response=>{
       this.car=response.data[0];
-     
+      console.log(this.car)
     })
   }
 

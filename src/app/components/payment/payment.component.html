@@ -1,3 +1,15 @@
+<div class="row gy-3">
+          <div class="col-md-12">
+            <label for="cc-name" class="form-label"><mark>Kayıtlı Kredi Kartlarınız  </mark> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"/>
+              <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"  />
+            </svg></label>
+            <select class="form-select" (change)="cardChange($event)"  [(ngModel)]="creditCardId" aria-label="Default select example">
+              <option *ngFor="let card of creditCards" [ngValue]="card.id">{{card.cardNumber}} </option>                
+            </select>
+          </div>
+        </div>
+
 <div class="checkout">
   <div class="credit-card-box">
     <div class="flip">
@@ -83,27 +95,16 @@
     </div>
   </div>
   <form [formGroup]="paymentAddForm" class="form" autocomplete="off" novalidate>
+
     <fieldset>
-      <label for="unitPrice">İsim</label>
+
       <div class="form-group">
         <input
-          type="text"
-          id="name"
-          formControlName="name"
+          type="hidden"
+          id="userId"
+          formControlName="userId"
           class="form-control"
-          placeholder="İsim"
-        />
-      </div>
-    </fieldset>
-    <fieldset>
-      <label for="unitPrice">Soyİsim</label>
-      <div class="form-group">
-        <input
-          type="text"
-          id="lastName"
-          formControlName="lastName"
-          class="form-control"
-          placeholder="Soyİsim"
+          placeholder="Kart Numarası"
         />
       </div>
     </fieldset>

@@ -1,0 +1,94 @@
+ <div class="content">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Bilgileri Güncelle</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="userUpdateForm">
+            <div class="mb-3">
+                <div class="form-group">
+                  <input
+                  type="hidden"
+                  class="form-control"
+                  id="id"
+                  formControlName="id"
+                  value="user.id"
+
+                 >
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="form-group">
+                    <label for="name">Ad</label>
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        id="firstName"
+                        formControlName="firstName"
+                        class="form-control"
+                        placeholder="İsim"
+                      />
+                    </div>
+                  </div>
+
+              </div>
+              <div class="mb-3">
+                <div class="form-group">
+                    <label for="lastname">Soyad</label>
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        id="lastName"
+                        formControlName="lastName"
+                        class="form-control"
+                        placeholder="Soyad"
+                      />
+                    </div>
+                  </div>
+
+              </div>
+              <div class="mb-3">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <div class="form-group">
+                      <input
+                        type="email"
+                        id="email"
+                        formControlName="email"
+                        class="form-control"
+                        placeholder="email"
+                      />
+                    </div>
+                  </div>
+
+              </div>
+              <div class="mb-3">
+                <div class="form-group">
+                    <label for="password">Şifre</label>
+                    <div class="form-group">
+                      <input
+                        type="password"
+                        id="password"
+                        formControlName="password"
+                        class="form-control"
+                        placeholder="password"
+                      />
+                    </div>
+                  </div>
+
+              </div>
+              
+          
+          </form>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-fill btn-success" (click)="bilgiler()">Bilgilerim</button>
+          <hr>
+            <button class="btn btn-fill btn-danger"(click)="update()" >Güncelle</button>
+        </div>
+      </div>
+  
+  
+    </div>
+  </div> 

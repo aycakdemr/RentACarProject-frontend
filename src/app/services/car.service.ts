@@ -14,9 +14,14 @@ export class CarService {
   apiUrl = "https://localhost:44393/api/"
   constructor(private HttpClient :HttpClient) { }
 
-  getCars() :Observable<ListResponseModel<CarDto>>{
+  getCarsDetail() :Observable<ListResponseModel<CarDto>>{
     let newPath =this.apiUrl+"cars/getcardetail"
     return this.HttpClient.get<ListResponseModel<CarDto>>(newPath);
+    
+  }
+  getCars() :Observable<ListResponseModel<Car>>{
+    let newPath =this.apiUrl+"cars/getall"
+    return this.HttpClient.get<ListResponseModel<Car>>(newPath);
     
   }
   getCarsByBrand(brandId:number) :Observable<ListResponseModel<CarDto>>{
@@ -30,7 +35,7 @@ export class CarService {
     
   }
   getCarDetailsById(carId:number) :Observable<ListResponseModel<CarDto>>{
-    let newPath =this.apiUrl+"cars/getbyid?carId="+carId
+    let newPath =this.apiUrl+"cars/getcardetailbyid?carId="+carId
     return this.HttpClient.get<ListResponseModel<CarDto>>(newPath);
     
   }
@@ -43,11 +48,16 @@ export class CarService {
     return this.HttpClient.post<ResponseModel>(this.apiUrl+"cars/add",car)
   }
   update(car:Car):Observable<ResponseModel>{
-    return this.HttpClient.post<ResponseModel>(this.apiUrl+"/update",car)
+    return this.HttpClient.post<ResponseModel>(this.apiUrl+"cars/update",car)
+  }
+  delete(id:number){
+    let newPath =this.apiUrl+"cars/delete?id="+id
+    return this.HttpClient.post(newPath,id);
   }
   getCarsById(id:number) :Observable<ListResponseModel<Car>>{
     let newPath =this.apiUrl+"cars/getbyid?carId="+id
     return this.HttpClient.get<ListResponseModel<Car>>(newPath);
     
   }
+
 }
